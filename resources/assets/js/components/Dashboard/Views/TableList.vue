@@ -27,7 +27,7 @@
             <div class="table-responsive">
               <l-table class="table-hover"
                        :columns="table2.columns"
-                       :data="table2.data">
+                       :data="tableDatas">
               </l-table>
             </div>
           </card>
@@ -89,7 +89,36 @@
         table2: {
           columns: [...tableColumns],
           data: [...tableData]
-        }
+        },
+        tableDatas: [],
+      }
+    },
+    mounted: function () {
+      console.log('mounted');
+      this.tableDatas = this.greet();
+    },
+    updated() {
+       console.log('updated'); 
+    },
+    methods: {
+      greet: function(event){
+          
+
+          axios.get('/users')
+            .then(function (response) {
+              // handle success
+              console.log(response);
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+
+        
+
       }
     }
   }

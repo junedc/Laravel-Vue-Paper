@@ -15,6 +15,10 @@
     return view('welcome');
 });*/
 
+Route::get('/users','UserController@getUsers')->name('users');
+
+
+
 Route::get('/{path?}', function () {
     return view('welcome');
 })->where('path', '[\/\w\.-]*');
